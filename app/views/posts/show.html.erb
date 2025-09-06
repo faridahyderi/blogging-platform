@@ -1,0 +1,16 @@
+<h1><%= @post.title %></h1>
+<p>by <%= @post.user.name %></p>
+<p><%= @post.body %></p>
+
+<%= link_to "Edit Post", edit_post_path(@post) %> |
+<%= link_to "Back to Posts", posts_path %>
+
+<h2>Comments</h2>
+<% @comments.each do |comment| %>
+  <p>- <%= comment.body %> (<%= comment.user.name %>)</p>
+<% end %>
+
+<%= form_with(model: [@post, @comment], local: true) do |form| %>
+  <%= form.text_area :body %>
+  <%= form.submit "Add Comment" %>
+<% end %>
