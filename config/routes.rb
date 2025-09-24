@@ -10,6 +10,6 @@ Rails.application.routes.draw do
   # Dashboard for logged-in users
   get "/dashboard", to: "dashboard#index"
 
-  # Health check (keep this if you want it)
+  
   get "up" => "rails/health#show", as: :rails_health_check
 end
