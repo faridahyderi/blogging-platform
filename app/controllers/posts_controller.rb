@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  before_action :require_login, except: [:index, :show]
     def index
       @posts = Post.all
     end
@@ -14,7 +15,7 @@ class PostsController < ApplicationController
     end
   
     def create
-        @post = User.first.posts.build(post_params)
+      @post = current_user.posts.build(post_params)
 
       if @post.save
         redirect_to @post, notice: "Post was successfully created."

@@ -10,6 +10,16 @@ Rails.application.routes.draw do
   # Dashboard for logged-in users
   get "/dashboard", to: "dashboard#index"
 
-  
+  # User signup
+  get "/signup", to: "users#new"
+  post "/signup", to: "users#create"
+
+  # User login/logout
+  get "/login", to: "sessions#new"
+  post "/login", to: "sessions#create"
+  delete "/logout", to: "sessions#destroy"
+
+  # Health check (keep this for Rails default)
   get "up" => "rails/health#show", as: :rails_health_check
 end
+
